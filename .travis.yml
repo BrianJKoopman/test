@@ -8,7 +8,8 @@ stages:
   - test
   - name: conditional
     if: |
-      branch = master
+      branch = master AND \
+      type = push
 
 jobs:
   include:
