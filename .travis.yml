@@ -10,7 +10,7 @@ stages:
     if: |
       branch = master AND \
       type = push AND \
-      tags = true
+      tag IS present
 
 jobs:
   include:
