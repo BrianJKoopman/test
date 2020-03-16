@@ -9,7 +9,8 @@ stages:
   - name: conditional
     if: |
       branch = master AND \
-      type = push
+      type = push AND \
+      tags = true
 
 jobs:
   include:
