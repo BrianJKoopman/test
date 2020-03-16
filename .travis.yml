@@ -1,14 +1,12 @@
 dist: xenial
+
 language: python
 python:
-  - "3.5"
   - "3.6"
-  - "3.7"
-
-script: pytest
 
 stages:
-  - name: test
+  - test
+  - name: conditional
     if: |
       branch = master
 
@@ -16,7 +14,10 @@ jobs:
   include:
     - stage: test
       install:
-        - pip install .
+        - pip install -r requirements.txt .
     
       script:
         - python3 -m pytest tests/
+
+    - stage: conditional
+      script: echo "foo"
