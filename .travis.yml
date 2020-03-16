@@ -9,8 +9,7 @@ stages:
   - name: conditional
     if: |
       branch = master AND \
-      type = push AND \
-      tag IS present
+      type = push
 
 jobs:
   include:
@@ -23,3 +22,8 @@ jobs:
 
     - stage: conditional
       script: echo "foo"
+      deploy:
+        provider: script
+        script: echo "bar"
+        on:
+          tags: true
