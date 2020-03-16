@@ -6,10 +6,9 @@ python:
   - "3.7"
 
 stages:
-  - test
+  - name: test
     if: |
-        branch = master
-        #tags = true
+      branch = master
 
 jobs:
   include:
