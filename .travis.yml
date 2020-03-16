@@ -13,9 +13,10 @@ stages:
 jobs:
   include:
     - stage: test
-      # command to install dependencies
       install:
+        # command to install dependencies
         - pip install .
-      # command to run tests
+
       script:
+        # command to run tests
         - pytest tests/
