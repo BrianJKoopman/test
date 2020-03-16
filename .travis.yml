@@ -8,8 +8,7 @@ python:
 stages:
   - test
     if: |
-        branch = master AND \
-        type = push
+        branch = master
         #tags = true
 
 jobs:
