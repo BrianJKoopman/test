@@ -7,9 +7,7 @@ python:
 stages:
   - test
   - name: conditional
-    if: |
-      branch = master AND \
-      type = push
+    if: tag IS present
 
 jobs:
   include:
@@ -26,4 +24,4 @@ jobs:
         provider: script
         script: echo "bar"
         on:
-          tags: true
+          branch: master
