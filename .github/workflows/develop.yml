@@ -1,9 +1,8 @@
-name: Code Tests
+name: Build Develop Images
 
 on:
   push:
-    branches-ignore: [ develop ]
-  pull_request:
+    branches: [ develop ]
 
 jobs:
   build:
@@ -12,6 +11,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    # Test code
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
@@ -24,3 +25,7 @@ jobs:
     - name: Test with pytest
       run: |
         python3 -m pytest tests/
+
+    # Runs a single command using the runners shell
+    - name: Run a one-line script
+      run: echo Build a dev image!
