@@ -2,7 +2,7 @@ name: Code Tests
 
 on:
   push:
-    branches: [ master ]
+    branches-ignore: [ develop ]
   pull_request:
 
 jobs:
