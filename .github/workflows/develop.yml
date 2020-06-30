@@ -32,6 +32,7 @@ jobs:
         REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
       run: |
         export DOCKER_TAG=`git describe --tags --always`
+        echo "${DOCKER_TAG}"
         echo "${REGISTRY_PASSWORD}" | docker login -u "${REGISTRY_USER}" --password-stdin;
         docker build -t ${REGISTRY_USER}/test:dev-${DOCKER_TAG} .
         docker push ${REGISTRY_USER}/test:dev-${DOCKER_TAG}
