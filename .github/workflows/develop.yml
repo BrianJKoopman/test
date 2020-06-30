@@ -11,6 +11,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      # Fetch all history for all tags and branches
+      with:
+        fetch-depth: 0
 
     # Test code
     - name: Set up Python 3.8
@@ -26,6 +29,13 @@ jobs:
       run: |
         python3 -m pytest tests/
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Build a dev image!
+    - name: Build and push development docker image
+      env:
+        REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+        REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
+      run: |
+        export DOCKER_TAG=`git describe --tags --always`
+        echo "${DOCKER_TAG}"
+        echo "${REGISTRY_PASSWORD}" | docker login -u "${REGISTRY_USER}" --password-stdin;
+        docker build -t ${REGISTRY_USER}/test:dev-${DOCKER_TAG} .
+        docker push ${REGISTRY_USER}/test:dev-${DOCKER_TAG}
