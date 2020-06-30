@@ -27,6 +27,9 @@ jobs:
         python3 -m pytest tests/
 
     - name: Build and push development docker image
+      env:
+        REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+        REGISTRY_USER: ${{ secrets.REGISTRY_USER }}
       run: |
         export DOCKER_TAG=`git describe --tags --always`
         echo "${REGISTRY_PASSWORD}" | docker login -u "${REGISTRY_USER}" --password-stdin;
