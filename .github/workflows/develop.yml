@@ -11,6 +11,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      # Fetch all history for all tags and branches
+      with:
+        fetch-depth: 0
 
     # Test code
     - name: Set up Python 3.8
