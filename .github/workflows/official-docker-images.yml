@@ -29,3 +29,12 @@ jobs:
       run: |
         echo I would build official image for image:${GITHUB_REF}
         echo and deploy it to Docker Hub!
+
+    - name: Build and push official docker image
+      run: |
+        export DOCKER_TAG=`git describe --tags --always`
+        echo "${REGISTRY_PASSWORD}" | docker login -u "${REGISTRY_USER}" --password-stdin;
+        docker build -t ${REGISTRY_USER}/test:${DOCKER_TAG} .
+        docker tag ${REGISTRY_USER}/test:${DOCKER_TAG} ${REGISTRY_USER}/test:latest
+        docker push ${REGISTRY_USER}/test:${DOCKER_TAG}
+        docker push ${REGISTRY_USER}/test:latest

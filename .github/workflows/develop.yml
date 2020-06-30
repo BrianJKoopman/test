@@ -26,6 +26,9 @@ jobs:
       run: |
         python3 -m pytest tests/
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Build a dev image!
+    - name: Build and push development docker image
+      run: |
+        export DOCKER_TAG=`git describe --tags --always`
+        echo "${REGISTRY_PASSWORD}" | docker login -u "${REGISTRY_USER}" --password-stdin;
+        docker build -t ${REGISTRY_USER}/test:dev-${DOCKER_TAG}.
+        docker push ${REGISTRY_USER}/test:dev-${DOCKER_TAG}
