@@ -33,8 +33,8 @@ If you are trying to issue a release of OCS you should follow these steps:
 
 2. Make a merge commit when you merge this PR.
 
- * This merge commit will be what is tagged for the release.
- * ``develop`` is now one commit behind ``master`` (the merge commit)
+   * This merge commit will be what is tagged for the release.
+   * ``develop`` is now one commit behind ``master`` (the merge commit)
 
 3. Pull the latest ``master`` and ``develop`` branches to your work station.
 
