@@ -6,6 +6,7 @@ on:
 
 jobs:
   test:
+    runs-on: ubuntu-18.04
     steps:
       - uses: ./.github/workflows/test-package.yml
   build:
