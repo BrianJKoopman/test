@@ -6,8 +6,7 @@ on:
 
 jobs:
   test:
-    steps:
-      - uses: ./.github/workflows/test-package.yml
+    uses: ./.github/workflows/test-package.yml
   build:
     name: build
     needs: test
