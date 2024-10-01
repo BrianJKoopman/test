@@ -10,7 +10,7 @@ jobs:
   build:
     name: build
     needs: test
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Cancel Previous Runs
