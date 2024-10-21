@@ -1,13 +1,9 @@
 coverage:
   status:
     project: true
-    codecov:   # status check name
-      target: auto
-      threshold: 5
-      base: auto
-      paths:
-        - "demo"
-      # advanced settings
-      if_ci_failed: error #success, failure, error, ignore
-      informational: false
-      only_pulls: false
+      default:
+        target: 100%
+        threshold: 1
+        paths:
+          - "demo"
+    patch: false
