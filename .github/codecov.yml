@@ -1,3 +1,11 @@
+---
 coverage:
-    status:
-        project: true
+  status:
+    project: true
+    patch: false
+    project:
+      default:
+        target: 100%
+        threshold: 1
+        paths:
+          - "demo"
