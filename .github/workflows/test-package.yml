@@ -33,7 +33,11 @@ jobs:
       run: |
         python3 -m pytest --cov --cov-report=xml tests/
 
+    - name: List files
+      run: ls -R
+
     - name: Upload results to Codecov
       uses: codecov/codecov-action@v4
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
+        verbose: true
