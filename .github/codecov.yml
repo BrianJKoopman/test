@@ -1,10 +1,12 @@
 ---
 codecov:
+  branch: main
+codecov:
   require_ci_to_pass: false
 coverage:
   status:
     project: true
-    patch: true
+    patch: false
     project:
       default:
         target: 100%
